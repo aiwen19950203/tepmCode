@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1_字符串形式的ref</title>
+  </head>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="./js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="./js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Login extends React.Component {
+
+        death = () => {
+          // 清除定时器
+          
+          ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        } 
+
+        componentDidMount() {
+   
+        
+         this.timer =  setInterval(()=>{
+            let {opacity} = this.state
+            // console.log("@");
+            opacity -= 0.1
+            if(opacity<=0) opacity = 1
+            this.setState({
+              opacity
+            })
+          },200)
+        }
+        // 挂载 
+        // 卸载组件 
+
+        componentWillUnmount(){
+          clearInterval(this.timer)
+
+        }
+
+        
+
+
+        state = {
+          opacity: 1
+        }
+
+
+        //   类里面
+
+        render() {  
+          //  1+n 次
+          // 第一次挂载
+          // render 不是只调用一次
+
+
+
+          return (
+          <div>
+            <h2 style={{opacity:this.state.opacity}}>
+              React 学不会怎么办
+
+            </h2>
+            <button onClick={this.death}>不活了</button>
+          </div>
+          )
+        }
+        
+
+
+
+	
+      }
+      ReactDOM.render(<Login />, document.getElementById("test"));
+
+
+
+			
+    </script>
+  </body>
+</html>
