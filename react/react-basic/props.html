@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <div id="test1"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 创建类式组件
+      class Person extends React.Component {
+        render() {
+          const { name, sex, age } = this.props;
+          return (
+            <ul>
+              <li>姓名：{name}</li>
+              <li>年龄：{age}</li>
+              <li>性别：{sex}</li>
+            </ul>
+          );
+        }
+
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          sex: PropTypes.string,
+          age: PropTypes.number,
+          speak: PropTypes.func, // 限制为函数
+        };
+        static defaultProps = {
+          sex: "二椅子",
+          age: 18,
+        };
+      }
+
+      ReactDOM.render(
+        <Person name="张三" age={20} speak={speak} />,
+        document.getElementById("test")
+      );
+
+      const P = { name: "张三", age: 22, sex: "男" };
+
+      ReactDOM.render(<Person {...P} />, document.getElementById("test1"));
+
+      function speak() {
+        console.log(123);
+      }
+
+      // 限制类型
+      // 默认值
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="./react.development.js"></script>
+  <script src="./react-dom.development.js"></script>
+  <script>
+    const VDOM = React.createElement('h1',{id: 'title'},'hello,React')
+    ReactDOM.render(VDOM,document.getElementById('test'))
+    // 为什么是 jsx 更加简单的创建 jsx
+
+
+  </script>
+</body>
+</html>

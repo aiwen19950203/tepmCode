@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        // 构造器中的this是类的实例对象
+        constructor(name) {
+          this.name = name;
+          // this.age = age
+        }
+        say() {
+          console.log(this);
+          console.log(`我叫${this.name}`);
+        }
+      }
+      const p1 = new Person("zhangsan");
+      p1.say();
+
+      // console.log(p1);
+      //  方法 放在了 类的原型对象上面，供实例使用
+      //  通过 Person 实例 调用 say 时  say 的 this 就是  Person 实例
+      // 继承
+      // 创建student 类 继承 Person
+      class Student extends Person {
+        constructor(name, grade) {
+          // super 必须调用
+          super(name);
+          this.grade = grade;
+          //  类中的构造器并非是必须要写的 如添加指定属性时候才写
+        }
+
+        study() {
+          console.log("学习");
+        }
+      }
+      const s = new Student("史爱文", "优秀");
+      s.say();
+
+      s.study();
+
+      console.log(s);
+    </script>
+  </body>
+</html>

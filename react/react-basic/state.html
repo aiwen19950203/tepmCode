@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    let that
+
+    // 创建类式组件
+    class Weather extends React.Component {
+      state = {
+        isHot: false
+      }
+      render() {
+        console.log(this); 
+        return <h1 onClick={this.changeWeather}>今天天气很{this.state.isHot ? '炎热' : '凉爽'}</h1>
+      }
+
+      changeWeather = () => {
+        const {isHot} = this.state 
+        this.setState({
+          isHot:!isHot
+        })
+      }
+      // 赋值语句 + 箭头函数 定义一个方法
+
+
+
+
+
+
+    } 
+    // 渲染组件到页面
+    ReactDOM
+    .render(<Weather/>, document.getElementById('test'))
+    // 状态驱动视图
+    // 组件实例对象身上就有 state
+    // 点击事件
+    // 原生点击事件 
+    // addEventListener
+    // onclick
+
+
+    
+    
+
+  </script>
+
+</body>
+</html>

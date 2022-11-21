@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../react.development.js"></script>
+  <script src="../react-dom.development.js"></script>
+  <script src="../babel.min.js"></script>
+  <script type="text/babel">
+
+    // babel 严格模式下 禁止 this 指向 window
+    function Demo(){
+      // 组件的首字母必须大写
+      console.log(this,"react中的this");
+      // undefined 严格模式下
+      return <h2>我是标题</h2>
+     
+    }  
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+    // render 函数做了什么
+    // 解析组件标签 找到 Demo 组件 
+    // 发现组件是函数定义的 将虚拟dom 转为真实的 dom渲染到页面上去
+    
+
+    
+  </script>
+</body>
+</html>

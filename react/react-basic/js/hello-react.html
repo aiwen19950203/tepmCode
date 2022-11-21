@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <div id="test"></div>
+  </head>
+  <body>
+    <script src="./react.development.js"></script>
+    <script src="./react-dom.development.js"></script>
+    <script src="./babel.min.js"></script>
+    <script type="text/babel">
+      // 通过 babel 把 jsx 翻译为 js
+      const VDOM = (
+        <h1 id="title">
+          <span>hello,Reactjs</span>
+        </h1>
+      ); // 不能加引号
+      // 渲染虚拟Dom 到页面
+      ReactDOM.render(VDOM, document.getElementById("test"));
+      // 为什么不是 jsx
+
+      // 虚拟 DOM 本质是一般的对象
+      // 虚拟dom 比较轻 因为虚拟dom 是 react 内部在用 用不上
+      // xml js 扩展语法 扩展了一些新的语法
+      // xml 早期用于存储和传输数据
+      // 后来才用了JSON 传输 
+      // JSON.parse 
+      // JSON.stringfy
+      // 微信公众号的服务器用的就是xml
+    </script>
+  </body>
+</html>

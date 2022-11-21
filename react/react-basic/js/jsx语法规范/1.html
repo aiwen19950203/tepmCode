@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  .title {
+    background-color: pink;
+    width: 300px;
+    color: #222;
+  }
+</style>
+<body>
+  <div id="test"></div>
+
+  <script src="../react.development.js"></script>
+  <script src="../react-dom.development.js"></script>
+  <script src="../babel.min.js"></script>
+</body>
+
+<script type="text/babel">
+ const myId = 'sAw'
+ const myContent = 'HELLO,react'
+
+//  虚拟dom 只有一个根标签
+//  
+
+  const VDOM = (
+    <div>
+      <h1 id={myId.toLowerCase()} className="title">
+      <span>{myContent.toLowerCase()}</span>
+      </h1>
+      </div>
+  )
+  // 渲染虚拟 dom 到页面 
+  ReactDOM.render(VDOM,document.getElementById('test'))
+
+  // 遍历
+  //  定义 React 组件首字母 必须大写就去渲染对应的组件 组件没有定义就报错
+  // 标签首字母 若小写字母开头则转为 同名标签 如果没有同名标签
+  // 模块化 和 组件化
+  // 组件化开发 
+  // 模块化 工程化的项目
+  // 结构样式字体 面向组件编程
+
+
+</script>
+
+</html>

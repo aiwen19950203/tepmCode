@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1_字符串形式的ref</title>
+  </head>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script src="./js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+      //创建组件
+      class Demo extends React.Component {
+        state = {
+          isHot: false,
+        };
+
+        changeWheather = () => {
+					const  {isHot} = this.state
+					this.setState({
+						isHot:!isHot
+					})
+				};
+
+        render() {
+          return (
+            <div>
+              <h2>今天天气很{isHot ? "炎热" : "凉爽"}</h2>
+              <input
+                type="text"
+                ref={(currentNode) => (this.input1 = currentNode)}
+              />
+              <br />
+              <button onClick={this.showInfo}></button> <br />
+              <button onClick={this.changeWheather}></button>
+              <br />
+            </div>
+          );
+        }
+      }
+
+      // 字符串的 ref 存在效率上的问题 建议使用 回调函数
+
+      //渲染组件到页面
+      ReactDOM.render(<Demo />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
