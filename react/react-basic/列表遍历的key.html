@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1_字符串形式的ref</title>
+  </head>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="./js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="./js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Login extends React.Component {
+        state = {
+          person: [
+            {
+              id: 1,
+              name: '小明'
+            },
+            {
+              id: 2,
+              name: '小李'
+            }
+         
+          ]
+        }
+
+        add = ()=> {
+          const {person} = this.state
+          const P = {id:person.length+1,name: '小王'}
+          this.setState({
+            person: [P,...person]
+          })
+        }
+        // 从前面添加的时候 或者从中间添加的时候 索引值变化的时候用 index 做为索引会导致页面真实Dom的渲染
+        // 用数据的唯一标识作为 key 的话
+        // 有输入类的时候 会产生错误的界面问题
+        // 但是渲染列表进行展示不存在逆序添加逆序删除等操作  使用index 和 key 是没有问题的
+        render() {
+          return (
+            <div>
+              <h1>key的作用</h1>
+              <button onClick={this.add}>添加一个小王</button>
+              <ul>
+                {
+                  this.state.person.map((item,index)=> {
+                    return <li key={index}>{item.id}------{item.name}
+                      <input type="text"/>
+                      </li>
+                   
+                  })  
+              }
+
+
+              
+              </ul>
+            </div>
+          )
+        }
+
+				}
+      ReactDOM.render(<Login />, document.getElementById("test"));
+
+			/**
+       * key 的作用 
+       * 简单说是虚拟dom 对象的标识，在更新的时候起着极其重要的要用
+       * 当数据发生变化时，根据新的数据生成新的虚拟dom                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+       * 
+       * 
+       * **/
+    </script>
+  </body>
+</html>
